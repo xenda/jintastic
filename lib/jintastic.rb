@@ -1,7 +1,7 @@
 require 'formtastic'
 
 class ActionView::Base 
-  def in_place_editor_for(path_spec_or_object, attributes, object_attributes = {},empty_text = "Click")
+  def in_place_editor_for(path_spec_or_object, attributes, object_attributes,empty_text = "Click")
     instance = case path_spec_or_object
       when ActiveRecord::Base: path_spec_or_object
       when Array: path_spec_or_object.last
@@ -31,7 +31,7 @@ class ActionView::Base
       input_attributes = attributes[attribute]
     end
 
-    container_tag =  instance.column_for_attribute(attribute).type == :text ? :pre : :span
+    container_tag =  instance.column_for_attribute(attribute).class == :text ? :pre : :span
 
     form_tag_options = {:id=>dom_id(path_spec_or_object, attribute)}
     content_tag_options = {:class=>'in_place_attribute'}
