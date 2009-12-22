@@ -4,7 +4,11 @@
     <% f.inputs do %>
       <% if input_attributes %>
         <% input_attributes.each_with_index do |attr,index| %>
-          <%= f.input attr, object_attributes[index] %>
+          <% if object_attributes.nil? %>
+            <%= f.input attr, object_attributes[index] %>
+          <% else %>
+            <%= f.input attr %>          
+          <% end %>
         <% end %>
       <% else %>
         <%= render :partial=>form_partial, :locals=>{:f=>f} %>
