@@ -43,6 +43,12 @@ class ActionView::Base
     else
       content_tag_options.merge!({:style=>"display: none"})
     end
+    
+    if instance[attribute].nil? || instance[attribute].blank?
+      attribute_value = empty_text
+    else
+       attribute_value = instance[attribute]
+    end
 
     render :partial => 'jintastic/in_place_editor', 
            :locals => {:container_tag=>container_tag,
@@ -54,7 +60,7 @@ class ActionView::Base
                      :form_tag_options=>form_tag_options,
                      :form_partial=>form_partial,
                      :object_attributes=>object_attributes,
-                     :empty_text => empty_text}
+                     :attribute_value => attribute_value}
   end   
 end
 
