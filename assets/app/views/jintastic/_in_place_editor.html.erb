@@ -4,7 +4,7 @@
     <% f.inputs do %>
       <% if input_attributes %>
         <% input_attributes.each_with_index do |attr,index| %>
-          <% if object_attributes.empty? %>
+          <% unless object_attributes.nil? or object_attributes.empty? %>
             <%= f.input attr, object_attributes[index] %>
           <% else %>
             <%= f.input attr %>          
