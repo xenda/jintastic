@@ -7,9 +7,9 @@
          <% logger.info "f.input #{attr}"%>
          <% logger.info input_attributes.to_yaml %>
           <% unless object_attributes.nil? or object_attributes.empty? %>
-            <%= f.input attr, object_attributes[index] %>
+            <%= f.input attr.to_sym, object_attributes[index] %>
           <% else %>
-            <%= f.input attr %>          
+            <%= f.input attr.to_sym %>          
           <% end %>
         <% end %>
       <% else %>
