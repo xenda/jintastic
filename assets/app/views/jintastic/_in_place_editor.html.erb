@@ -3,14 +3,14 @@
   <% semantic_form_for path_spec_or_object, form_tag_options do |f| %>
     <% f.inputs do %>
       <% if input_attributes %>
-        <% input_attributes.each do |attr| %>
-          <%= f.input attr %>
+        <% input_attributes.each_with_index do |attr,index| %>
+          <%= f.input attr, object_attributes[index] %>
         <% end %>
       <% else %>
         <%= render :partial=>form_partial, :locals=>{:f=>f} %>
       <% end %>
     <% end %>
-    <%= submit_tag 'Save', :class=>'in_place_save' %>
-    <input type='button' value='Cancel' class='in_place_cancel' />
+    <%= submit_tag 'Grabar', :class=>'in_place_save' %>
+    <input type='button' value='Cancelar' class='in_place_cancel' />
   <% end %>
 </div>
