@@ -1,7 +1,7 @@
 require 'formtastic'
 
 class ActionView::Base 
-  def in_place_editor_for(path_spec_or_object, attributes, object_attributes = {},)
+  def in_place_editor_for(path_spec_or_object, attributes, object_attributes = {})
     instance = case path_spec_or_object
       when ActiveRecord::Base: path_spec_or_object
       when Array: path_spec_or_object.last
