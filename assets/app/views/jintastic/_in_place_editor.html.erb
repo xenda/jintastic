@@ -4,6 +4,8 @@
     <% f.inputs do %>
       <% if input_attributes %>
         <% input_attributes.each_with_index do |attr,index| %>
+         <% logger.info "f.input #{attr}"%>
+         <% logger.info input_attributes.to_yaml %>
           <% unless object_attributes.nil? or object_attributes.empty? %>
             <%= f.input attr, object_attributes[index] %>
           <% else %>
