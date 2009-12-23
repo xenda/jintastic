@@ -57,7 +57,6 @@ class ActionView::Base
                      :content_tag_options=>content_tag_options,
                      :form_tag_options=>form_tag_options,
                      :form_partial=>form_partial,
-                     :attribute_value => attribute_value,
                      :formtastic_attributes => formtastic_attributes,
                      :default_tag_text => default_tag_text }
   end   
