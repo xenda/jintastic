@@ -4,7 +4,7 @@
     <% f.inputs do %>
       <% if input_attributes %>
         <% input_attributes.each do |attr| %>
-          <% unless object_attributes.nil? or object_attributes.empty? %>
+          <% unless formtastic_attributes.nil? or formtastic_attributes.empty? %>
             <%= f.input attr, formtastic_attributes %>
           <% else %>
             <%= f.input attr %>          
