@@ -1,16 +1,14 @@
 <div class="in_place_editor_wrapper">
-  <%= content_tag container_tag, attribute_value, content_tag_options %>
+  <%= content_tag container_tag, default_tag_text, content_tag_options %>
   <% semantic_form_for path_spec_or_object, form_tag_options do |f| %>
     <% f.inputs do %>
       <% if input_attributes %>
         <% input_attributes.each do |attr| %>
-         <%# logger.info "f.input #{attr}"%>
-         <%# logger.info input_attributes.to_yaml %>
-          <%# unless object_attributes.nil? or object_attributes.empty? %>
-            <%#= f.input attr, object_attributes[index] %>
-          <%# else %>
+          <% unless object_attributes.nil? or object_attributes.empty? %>
+            <%= f.input attr, formtastic_attributes %>
+          <% else %>
             <%= f.input attr %>          
-          <%# end %>
+          <% end %>
         <% end %>
       <% else %>
         <%= render :partial=>form_partial, :locals=>{:f=>f} %>

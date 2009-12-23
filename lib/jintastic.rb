@@ -1,11 +1,13 @@
 require 'formtastic'
 
 class ActionView::Base 
-  def in_place_editor_for(path_spec_or_object, attributes, attr_for_formtastic={},empty_text = "Click")
+  def in_place_editor_for(path_spec_or_object, attributes, formtastic_attributes = {})
     instance = case path_spec_or_object
       when ActiveRecord::Base: path_spec_or_object
       when Array: path_spec_or_object.last
     end
+    
+    default_tag_text = formtastic_attributes.delete(:default_text) || "Click here"
     
     if attributes.class==Symbol  
       #simple one attribute in place editor
@@ -60,7 +62,9 @@ class ActionView::Base
                      :form_tag_options=>form_tag_options,
                      :form_partial=>form_partial,
                      :attr_for_formtastic=>attr_for_formtastic,
-                     :attribute_value => attribute_value}
+                     :attribute_value => attribute_value,
+                     :formtastic_attributes => formtastic_attributes,
+                     :default_tag_text => default_tag_text }
   end   
 end
 
