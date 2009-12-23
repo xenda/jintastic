@@ -7,9 +7,6 @@ class ActionView::Base
       when Array: path_spec_or_object.last
     end
     
-    default_tag_text = formtastic_attributes.delete(:default_text) || "Click here"
-    default_tag_text = instance[attribute] if instance[attribute]
- 
     if attributes.class==Symbol  
       #simple one attribute in place editor
       #in_place_editor_for @user, :name
@@ -46,7 +43,10 @@ class ActionView::Base
     else
       content_tag_options.merge!({:style=>"display: none"})
     end
-    
+
+    default_tag_text = formtastic_attributes.delete(:default_text) || "Click here"
+    default_tag_text = instance[attribute] if instance[attribute]
+  
 
     render :partial => 'jintastic/in_place_editor', 
            :locals => {:container_tag=>container_tag,
